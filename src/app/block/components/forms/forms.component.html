@@ -1,0 +1,67 @@
+<div class="table-btn" style="padding: 10px ;" fxLayoutAlign="end">
+  <button mat-raised-button color="primary" (click)="table()">users</button>
+</div>
+<div class="box">
+  <form [formGroup]="employeeDetailForm" >
+    <div>
+      <div fxFlex="100%" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
+      <div fxLayout="row" fxFlex="50%">
+        <mat-label fxFlex="40%">First Name:</mat-label>
+        <mat-form-field fxFlex="60%" appearance="outline">
+          <input matInput placeholder="Placeholder" formControlName="firstName">
+          <mat-error *ngIf="employeeDetailForm?.get('firstName')?.hasError('pattern')"> this is not matching</mat-error>
+          <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+        </mat-form-field>
+      </div>
+      <div fxLayout="row" fxFlex="50%">
+        <mat-label fxFlex="40%">Last Name:</mat-label>
+        <mat-form-field fxFlex="60%" appearance="outline">
+          <input matInput placeholder="Placeholder" formControlName="lastName">
+          <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+        </mat-form-field>
+      </div>
+      </div>
+    </div>
+
+    <div>
+      <div fxFlex="100%" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
+        <div fxLayout="row" fxFlex="50%">
+          <mat-label fxFlex="40%">Email:</mat-label>
+          <mat-form-field fxFlex="60%" appearance="outline">
+            <input matInput placeholder="Placeholder" formControlName="eMail">
+            <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" fxFlex="50%">
+          <mat-label fxFlex="40%">Alternate Email:</mat-label>
+          <mat-form-field fxFlex="60%" appearance="outline">
+            <input matInput placeholder="Placeholder" formControlName="alternateEmail">
+            <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div fxFlex="100%" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
+        <div fxLayout="row" fxFlex="50%">
+          <mat-label fxFlex="40%">Phone number:</mat-label>
+          <mat-form-field fxFlex="60%" appearance="outline">
+            <input matInput placeholder="Placeholder" formControlName="phoneNumber">
+            <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" fxFlex="50%">
+          <mat-label fxFlex="40%">Alternate number:</mat-label>
+          <mat-form-field fxFlex="60%" appearance="outline">
+            <input matInput placeholder="Placeholder" formControlName="alternateNumber">
+            <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div fxLayoutAlign="center center">
+    <button mat-raised-button color="primary" (click)="onSubmit()">submit</button>
+  </div>
+</div>
+

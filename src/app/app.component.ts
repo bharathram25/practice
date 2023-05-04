@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RegisterService } from './service/register.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'practice';
+  constructor(private register:RegisterService){}
+
+  ngOnInit(){
+    this.register.getMessage();
+  }
 }

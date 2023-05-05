@@ -27,6 +27,8 @@ router.get('/getUsers', EmployeeController.getUsers);
 router.post('/updateUser', EmployeeController.updateUser);
 router.post('/createUser', EmployeeController.createUser);
 router.post('/deleteUser', EmployeeController.deleteUser);
+router.post('/getUser', EmployeeController.getUser);
+
 // ---------------------------------------------------
 
 

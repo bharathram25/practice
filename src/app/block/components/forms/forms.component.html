@@ -61,7 +61,7 @@
     </div>
   </form>
   <div fxLayoutAlign="center center">
-    <button mat-raised-button color="primary" (click)="onSubmit()">submit</button>
+    <button mat-raised-button color="primary"(click)="fromEdit?onUpdate():onSubmit()">{{fromEdit?'Update':'submit'}}</button>
   </div>
 </div>
 

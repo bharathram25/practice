@@ -6,8 +6,8 @@ import { ChildComponent } from './block/components/child/child.component';
 const routes: Routes = [
   {path:'',redirectTo:"form",pathMatch:'full'},
   {path:'form',component:FormsComponent},
+  {path:'form/:data/:id',component:FormsComponent},
   {path:'table',component:ChildComponent},
-
 ];
 
 @NgModule({

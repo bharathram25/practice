@@ -48,18 +48,18 @@ export class ChildComponent {
   onEdit(data:any){
     console.log(data);
 
-  }
-
-  ngAfterViewInit() {
+    this.route.navigate(['form','edit',data.id]);
 
   }
+
+  ngAfterViewInit() {  }
 
   form(){
     this.route.navigate(['form']);
   }
 
-  // applyFilter(event: Event) {
-  //   const filterValue = (event.target as HTMLInputElement).value;
-  //   this.dataSource.filter = filterValue.trim().toLowerCase();
-  // }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 }

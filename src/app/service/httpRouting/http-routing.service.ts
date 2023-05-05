@@ -10,7 +10,7 @@ export class HttpRoutingService {
   constructor(private httpClient:HttpClient) { }
 
   getMethod(url:any){
-    console.log(this.backendUrl+url);
+    // console.log(this.backendUrl+url);
     return this.httpClient.get(this.backendUrl+url);
   }
 

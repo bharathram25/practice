@@ -28,4 +28,12 @@ export class RegisterService {
   deleteUser(url:string,data:any){
     return this.httpRouting.postMethod('v1/'+url, data);
   }
+
+  getUser(url:string,data:any){
+    return this.httpRouting.postMethod('v1/'+url, data);
+  }
+
+  updateUser(url:string,data:any){
+    return this.httpRouting.postMethod('v1/'+url, data);
+  }
 }

@@ -138,6 +138,19 @@ const deleteUser = async function (req, res) {
 }
 module.exports.deleteUser = deleteUser;
 
+//getUser
+const getUser = async function (req, res) {
+  let err;
+  [err, userDetails] = await to(Register.findOne({
+    where: {
+      id: req.body.id
+    }
+  }));
+  if (err) return ReE(res, err, 422);
+  return ReS(res, { userDetails });
+}
+module.exports.getUser = getUser;
+
 const createUser = async function (req, res) {
   let err;
   console.log(req);

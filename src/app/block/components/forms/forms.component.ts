@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpRoutingService } from 'src/app/service/httpRouting/http-routing.service';
 import { RegisterService } from 'src/app/service/register.service';
 import { pattern } from 'src/assets/pattern';
@@ -19,26 +19,43 @@ export class FormsComponent {
   detail: any;
   time="12:12:00";
   message: any;
+  appedendId!:number;
+  fromEdit=false;
 
   constructor(
     private httpRouting:HttpClient,
     private registerService:RegisterService,
     private http:HttpRoutingService,
     private snackbar:MatSnackBar,
-    private router:Router
+    private router:Router,
+    private route:ActivatedRoute
     ){}
   ngOnInit(){
     this.formInit();
     this.registerService.getUsers('getUsers').subscribe((res:any  )=>{
-      console.log(res.response);
+      // console.log(res.response);
       this.detail=res.response;
       res.response.forEach((element:any )=> {
-        console.log(element);
+        // console.log(element);
         this.responseData=element;
         // this.formInit();
         // delete element.id;
         // this.employeeDetailForm.patchValue(element);
       });
+
+      //get params data
+      this.route.params.subscribe((res:any)=>{
+        if(res && res.data){
+          this.fromEdit=true;
+          this.appedendId=res.id;
+          console.log(this.appedendId);
+          //get specific user
+          this.registerService.getUser('getUser',{id:this.appedendId}).subscribe((res:any)=>{
+            console.log(res.userDetails);
+            this.employeeDetailForm.patchValue(res.userDetails);
+          })
+        }
+      })
     })
 
     this.registerService.messages.subscribe(res => {this.message=res;
@@ -75,11 +92,17 @@ export class FormsComponent {
     }
   }
 
-  // jsonapi(){
-  //   this.http.getMethod('posts').subscribe(res=>{
-  //     console.log(res);
-  //   })
-  // }
+  onUpdate(){
+    if(this.employeeDetailForm.valid){
+      this.employeeDetailForm.value.id=+this.appedendId
+      this.registerService.updateUser('updateUser',this.employeeDetailForm.value).subscribe((res:any)=>{
+        this.employeeDetailForm.reset();
+        this.snackbar.open('Record update successfully','ok');
+        this.router.navigate(['table']);
+      })
+    }
+  }
+
 
   table(){
     this.router.navigate(['table']);
